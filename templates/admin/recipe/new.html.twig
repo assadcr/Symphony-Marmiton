@@ -1,0 +1,14 @@
+{% extends "/base.html.twig" %}
+{% block body %}
+	<main>
+	<h1>Creer une nouvelle recette</h1>
+		<div class="w-75 mx-auto my-5">
+		{{ form_start(form) }}
+			{{ form_rest(form) }}
+			<input type="submit">
+			{{ form_end(form) }}
+			  <a href="{{ path('admin_recipe_index') }}">back to list</a>
+		</div>
+	</main>
+
+{% endblock %}

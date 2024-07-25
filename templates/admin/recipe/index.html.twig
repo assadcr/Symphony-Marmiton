@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecipeController!
+{% endblock %}
+
+{% block body %}
+	<h1>recette index</h1>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Slug</th>
+                <th>Temps</th>
+                <th>NbPersonne</th>
+                <th>Difficulté</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Favorie</th>
+                <th>DateCreation</th>
+                <th>DateMiseaJour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recipe in recipe %}
+            <tr>
+                <td>{{ recipe.id }}</td>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.slug }}</td>
+                <td>{{ recipe.time }}</td>
+                <td>{{ recipe.nbPersonne }}</td>
+                <td>{{ recipe.difficulty }}</td>
+                <td>{{ recipe.description }}</td>
+                <td>{{ recipe.price }}</td>
+                <td>{{ recipe.isFavorite ? 'Yes' : 'No' }}</td>
+                <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d') : '' }}</td>
+                <td>
+        <a href={{ path('admin_recipe_show', { 'id': recipe.id} )}} >details</a>
+		<a href={{ path('admin_recipe_edit', { 'id': recipe.id} )}} >modification</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+	{% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
